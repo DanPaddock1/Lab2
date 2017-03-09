@@ -45,11 +45,11 @@ public class TestHands {
 		h.AddCardToHand(new Card(eRank.SEVEN,eSuit.DIAMONDS));		
 		h.EvaluateHand();
 		
-		//	Hand better be a full house
+		//	Hand better be a straight flush
 		assertEquals(eHandStrength.StraightFlush.getHandStrength(),
 				h.getHandScore().getHandStrength().getHandStrength());
 		
-		//	HI hand better be 'Four'
+		//	HI hand better be 'Seven'
 		assertEquals(eRank.SEVEN.getiRankNbr(),
 				h.getHandScore().getHiHand().getiRankNbr());
 		
@@ -72,7 +72,7 @@ public class TestHands {
 		h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));		
 		h.EvaluateHand();
 		
-		//	Hand better be a full house
+		//	Hand better be a four of a kind
 		assertEquals(eHandStrength.FourOfAKind.getHandStrength(),
 				h.getHandScore().getHandStrength().getHandStrength());
 		
@@ -84,7 +84,7 @@ public class TestHands {
 		assertEquals(eRank.THREE.getiRankNbr(),
 				h.getHandScore().getLoHand().getiRankNbr());
 		
-		//	Full House has no kickers.
+		//	FourOfAKind has 1 kicker
 		assertEquals(1,h.getHandScore().getKickers().size());
 	}	
 	
@@ -99,19 +99,19 @@ public class TestHands {
 		h.AddCardToHand(new Card(eRank.SIX,eSuit.DIAMONDS));		
 		h.EvaluateHand();
 		
-		//	Hand better be a full house
+		//	Hand better be four of a kind
 		assertEquals(eHandStrength.FourOfAKind.getHandStrength(),
 				h.getHandScore().getHandStrength().getHandStrength());
 		
-		//	HI hand better be 'Four'
+		//	HI hand better be 'Six'
 		assertEquals(eRank.SIX.getiRankNbr(),
 				h.getHandScore().getHiHand().getiRankNbr());
 		
-		//	LO hand better be 'Three'
+		//	LO hand better be 'Five'
 		assertEquals(eRank.FIVE.getiRankNbr(),
 				h.getHandScore().getLoHand().getiRankNbr());
 		
-		//	Full House has no kickers.
+		//	Four of a kind has 1 kicker
 		assertEquals(1,h.getHandScore().getKickers().size());
 	}
 	
@@ -153,7 +153,7 @@ public class TestHands {
 		h.AddCardToHand(new Card(eRank.FOUR,eSuit.SPADES));		
 		h.EvaluateHand();
 
-		//	Hand better be a full house
+		//	Hand better be a three of a kind
 		assertEquals(eHandStrength.ThreeOfAKind.getHandStrength(),
 				h.getHandScore().getHandStrength().getHandStrength());
 		
@@ -161,7 +161,7 @@ public class TestHands {
 		assertEquals(eRank.FOUR.getiRankNbr(),
 				h.getHandScore().getHiHand().getiRankNbr());
 		
-		//	Full House has no kickers.
+		//	Three of a kind has 2 kickers.
 		assertEquals(2,h.getHandScore().getKickers().size());
 }
 	@Test
