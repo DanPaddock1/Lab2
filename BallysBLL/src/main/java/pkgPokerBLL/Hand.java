@@ -328,7 +328,6 @@ public class Hand {
 	}	
 	
 
-	//TODO: Implement This Method
 	public static boolean isHandPair(Hand h, HandScore hs)
 	{
 		boolean isHandPair = false;
@@ -386,7 +385,6 @@ public class Hand {
 		return isHandPair;
 	}
 		
-	//TODO: Implement This Method
 	public static boolean isHandHighCard(Hand h, HandScore hs)
 	{
 		boolean isHandHighCard = false;
