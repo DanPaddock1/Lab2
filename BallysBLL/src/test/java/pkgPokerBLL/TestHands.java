@@ -164,61 +164,58 @@ public class TestHands {
 		//	Full House has no kickers.
 		assertEquals(2,h.getHandScore().getKickers().size());
 }
-	@Test // Tests Positions 1, 2, 3, 4, and 5 for a Straight
+	@Test
+	public void TestHandFlush01() {
+		
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.TWO,eSuit.HEARTS));
+		h.AddCardToHand(new Card(eRank.TEN,eSuit.HEARTS));
+		h.AddCardToHand(new Card(eRank.FOUR,eSuit.HEARTS));
+		h.AddCardToHand(new Card(eRank.KING,eSuit.HEARTS));
+		h.AddCardToHand(new Card(eRank.SIX,eSuit.HEARTS));	
+		
+		h.EvaluateHand();
+		
+		//Hand better be a Flush
+		assertEquals(eHandStrength.Flush.getHandStrength(),
+				h.getHandScore().getHandStrength().getHandStrength());
+	}
+	
+	
+	@Test
+	public void TestHandFlush02() {
+		
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.TWO,eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.TEN,eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.FOUR,eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.KING,eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.SIX,eSuit.DIAMONDS));	
+		
+		h.EvaluateHand();
+		
+		//Hand better be a Flush
+		assertEquals(eHandStrength.Flush.getHandStrength(),
+				h.getHandScore().getHandStrength().getHandStrength());
+	}
+	
 	public void TestStraight() {
-
+		
 		Hand h = new Hand();
-		h.AddCardToHand(new Card(eRank.FIVE, eSuit.CLUBS));
-		h.AddCardToHand(new Card(eRank.SIX, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.SEVEN, eSuit.HEARTS));
-		h.AddCardToHand(new Card(eRank.EIGHT, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.NINE, eSuit.SPADES));
+		h.AddCardToHand(new Card(eRank.ACE,eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.FIVE,eSuit.HEARTS));
+		h.AddCardToHand(new Card(eRank.FOUR,eSuit.SPADES));
+		h.AddCardToHand(new Card(eRank.THREE,eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.TWO,eSuit.SPADES));		
 		h.EvaluateHand();
-
-		assertEquals(eHandStrength.Straight.getHandStrength(), h.getHandScore().getHandStrength().getHandStrength());
-
-		assertEquals(eRank.NINE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
-		assertEquals(eRank.FIVE.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
-
-		assertEquals(0, h.getHandScore().getKickers().size());
-	}
-
-	@Test // Tests Positions 1, 2, 3, 4, and 5 for a High-Ace Straight
-	public void TestStraightA() {
-
-		Hand h = new Hand();
-		h.AddCardToHand(new Card(eRank.TEN, eSuit.CLUBS));
-		h.AddCardToHand(new Card(eRank.JACK, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.QUEEN, eSuit.HEARTS));
-		h.AddCardToHand(new Card(eRank.KING, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.ACE, eSuit.SPADES));
-		h.EvaluateHand();
-
-		assertEquals(eHandStrength.Straight.getHandStrength(), h.getHandScore().getHandStrength().getHandStrength());
-
-		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
-		assertEquals(eRank.TEN.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
-
-		assertEquals(0, h.getHandScore().getKickers().size());
-	}
-
-	@Test // Tests Positions 1, 2, 3, 4, and 5 for a Low-Ace Straight
-	public void TestStraighta() {
-
-		Hand h = new Hand();
-		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
-		h.AddCardToHand(new Card(eRank.TWO, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.THREE, eSuit.HEARTS));
-		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.FIVE, eSuit.SPADES));
-		h.EvaluateHand();
-
-		assertEquals(eHandStrength.Straight.getHandStrength(), h.getHandScore().getHandStrength().getHandStrength());
-
-		assertEquals(eRank.FIVE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
-		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
-
-		assertEquals(0, h.getHandScore().getKickers().size());
+		
+		assertEquals(eHandStrength.Straight.getHandStrength(),
+				h.getHandScore().getHandStrength().getHandStrength());
+		
+		assertEquals(eRank.TWO.getiRankNbr(),
+				h.getHandScore().getHiHand().getiRankNbr());
+		
+		assertEquals(0,h.getHandScore().getKickers().size());
 	}
 	
 	@Test
@@ -406,7 +403,7 @@ public class TestHands {
 				h.getHandScore().getKickers().get(0).geteRank());
 	}
 	
-	/*@Test
+	@Test
 	public void isAcesAndEights1() {
 		
 		Hand h = new Hand();
@@ -469,7 +466,7 @@ public class TestHands {
 				h.getHandScore().getKickers().get(0).geteRank()); 
 		
 	}
-}*/
+}
 	
 
-	}
+	
